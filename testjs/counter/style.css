@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Teko', sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.contador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contador .text {
+    color: darkblue;
+    font-size: 5rem;
+}
+
+.contador #num {
+    font-size: 5rem;
+    margin: 1rem;
+}
+
+.pos {
+    color: green;
+}.mid {
+    color: darkcyan;
+}.neg {
+    color: red;
+}
+
+
+.buttons {
+    justify-content: space-betweens;
+}
+
+.buttons input {
+    border-color: black;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+}
+.buttons input#res{
+    margin: 0 1rem;
+}

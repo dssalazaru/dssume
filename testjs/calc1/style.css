@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: monospace;
+    height: 100%;
+}
+
+main {
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    background-color: black;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    max-width: 100%;
+}
+
+.display {
+    padding: 2rem 0.5rem 0 0;
+    overflow: hidden;
+}
+
+table tr td{
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+}
+
+td.n {
+    background-color: orange;
+}
+
+td.o {
+    background-color: gray;
+}
+
+td.ac {
+    background-color: salmon;
+}
+
+td.eq {
+    background-color: skyblue;
+}
+
+td.display {
+    text-align: right;
+    color: white;
+}
+
+.footer {
+    background-color: gray;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer h5 {
+    font-size: 1.2rem;
+    text-align: center;
+}
