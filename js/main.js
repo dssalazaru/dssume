@@ -7,7 +7,7 @@ const click = (item) => {
     let ce = document.querySelector(item);
     ce.addEventListener('click', (e) => {
         e.preventDefault();
-        // event
+        console.log("button 1")
     })
 }
 
@@ -33,5 +33,5 @@ const loadAnimation = () => {
 window.onload = () => {
     loadAnimation()
     console.log(">_ Ready!")
-
+    click(".container")
 }
