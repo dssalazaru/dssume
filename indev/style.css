@@ -1,0 +1,84 @@
+:root {
+	--dark-cyan: #008888;
+	--light-cyan: #00bbbb;
+}
+
+* {
+	padding: 0; 
+	margin: 0;
+	box-sizing: content-box;
+	font-family: Helvetica, 'Consolas', Arial;
+	color: var(--light-cyan);
+}
+
+img {
+	max-width: 100% !important;
+}
+
+body{
+	background-color: var(--dark-cyan);
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 10s linear infinite;
+  -moz-animation: rotating 10s linear infinite;
+  -ms-animation: rotating 10s linear infinite;
+  -o-animation: rotating 10s linear infinite;
+  animation: rotating 10s linear infinite;
+}
+
+.no-copy {
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+	user-select: none;          /* Likely future */     
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.info {
+	display: flex;
+        flex-direction: column;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.info i {
+	font-size: 12rem;
+}
+
+.info * {
+	text-align: center;
+}
