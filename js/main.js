@@ -10,6 +10,7 @@ const click = (item) => {
         // event
     })
 }
+
 // Name and Title animations on page load
 
 const loadAnimation = () => {
@@ -31,6 +32,6 @@ const loadAnimation = () => {
 
 window.onload = () => {
     loadAnimation()
-    console.log("Ready")
+    console.log(">_ Ready!")
 
 }
