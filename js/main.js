@@ -1,19 +1,47 @@
 // Variables
 
+const nav = document.querySelectorAll(".nav li")
+const content = document.querySelectorAll(".main-content")
 
 // Click events | set var clickEvent with => click("#name")
 
-const click = (item) => {
-    let ce = document.querySelector(item);
-    ce.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log("button 1")
+// const click = (item) => {
+//     let ce = document.querySelector(item);
+//     ce.addEventListener('click', (e) => {
+//         e.preventDefault();
+//         console.log("button 1")
+//     })
+// }
+
+
+nav.forEach(e => {
+    e.addEventListener('click', e => {
+        e.preventDefault()
+        let opt = e.target.textContent
+        console.log(opt)
+        nav.forEach(e => {
+            e.removeAttribute('class', 'active')
+        });
+        e.target.setAttribute('class', 'active')
+        
+        loadData(opt)
     })
+})
+
+let loadData = (opt) => {
+    content.forEach(e => {
+        e.setAttribute('class', 'hide')
+    })
+    let active = '.' + opt
+    console.log(document.querySelector(active))
+    // document.querySelector(active).removeAttribute('class', 'hide')
 }
+
+
 
 // Name and Title animations on page load
 
-const loadAnimation = () => {
+const loadPage = () => {
     setTimeout(function () {
         document.querySelector(".title").setAttribute("style", "border-right:0");
     }, 6000);
@@ -31,7 +59,6 @@ const loadAnimation = () => {
 // Start Web
 
 window.onload = () => {
-    loadAnimation()
+    loadPage()
     console.log(">_ Ready!")
-    click(".container")
 }
