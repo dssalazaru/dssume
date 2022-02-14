@@ -78,16 +78,19 @@ img {
 }
 
 .name {
-  display: block;
   font-family: 'Major Mono Display', monospace;
-  font-size: 5rem;
-  width: 14ch;
-  margin: 0 auto;
 
   animation: textColor 8s infinite 6s;
 }
 
-.title {
+.main-title .name {
+  display: block;
+  width: 14ch;
+  margin: 0 auto;
+  font-size: 5rem;
+}
+
+.main-title .title {
   display: block;
   white-space: nowrap;
   font-size: 2rem;
@@ -103,11 +106,12 @@ img {
 
 /*------------------------ Main-Content ------------------------*/
 
-.main-content > * {
+.main-content section {
   display: flex;
+  height: 70vh;
   align-items: center;
   justify-content: center;
-  height: 70vh;
+  flex-direction: column;
 }
 
 .about p {
@@ -116,16 +120,50 @@ img {
   font-size: 2rem;
 }
 
+.about pre {
+  font-size: 2rem;
+  margin: 2rem;
+}
+/*------------------------ Footer ------------------------*/
+
+.footer {
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 2rem;
+  outline: 2px solid var(--complement-r);
+}
+
+.footer .name {
+  font-size: 2rem;
+}
+
+.footer .social {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 20%;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.icon:hover {
+  color: var(--complement-r);
+}
+
 /*------------------------ Utils ------------------------*/
 
 .hide {
-  display: none;
-  width: 0;
-  height: 0;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .lock {
-  z-index: 1000;
+  z-index: 1000 !important;
   background: var(--gray-d2);
   position: absolute;
   top: 0px;
