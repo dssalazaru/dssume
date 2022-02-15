@@ -1,15 +1,16 @@
 // Variables
 
-const nav = document.querySelectorAll(".nav li")
-const content = document.querySelectorAll(".main-content section")
+const nav = document.querySelectorAll('.nav li')
+const content = document.querySelectorAll('.main-content section')
+const startBtn = document.querySelector('#start')
 
-// Click events | set var clickEvent with => click("#name")
+// Click events | set var clickEvent with => click('#name')
 
 // const click = (item) => {
 //     let ce = document.querySelector(item);
 //     ce.addEventListener('click', (e) => {
 //         e.preventDefault();
-//         console.log("button 1")
+//         console.log('button 1')
 //     })
 // }
 
@@ -30,35 +31,62 @@ nav.forEach(e => {
 let loadData = (opt) => {
     content.forEach(e => {
         e.classList.add('hide')
-        if (e.classList.contains(opt)){
+        if (e.classList.contains(opt)) {
             e.classList.remove('hide')
         }
     })
-    // document.querySelector(active).removeAttribute('class', 'hide')
 }
-
-
 
 // Name and Title animations on page load
 
-const loadPage = () => {
+const welcome = () => {
+    document.querySelector('.main-title').setAttribute('style', 'cursor:none')
     setTimeout(function () {
-        document.querySelector(".title").setAttribute("style", "border-right:0");
+        get('.title').setAttribute('style', 'border-right:0');
     }, 6000);
     setTimeout(function () {
-        document.querySelector(".name").textContent = "Daniel Steven Salazar Uribe";
+        get('.name').textContent = 'Daniel Steven Salazar Uribe';
+        get('#start').removeAttribute('class', 'hide');
+        document.querySelector('.main-title').removeAttribute('style', 'cursor:none')
     }, 6000);
-    setTimeout(function () {
-        document.querySelector("#screen").setAttribute("class", "lock transition-down");
+    setTimeout(function () {transitionDown()}, 5400);
+}
+
+startBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    transitionDown()
+    setTimeout(function () {    
+    document.querySelector('#footer').classList.remove('hide')
+    document.querySelector('#header').classList.remove('hide')
+    document.querySelector('.main-title').classList.add('hide')
+    loadData('about')
+}, 700);
+
+})
+
+// Start page
+
+const start = () => {
+    // fadeIn
+}
+
+
+// Utils
+
+const get = (item) => {
+    return document.querySelector(item)
+}
+
+const transitionDown = () => {
+    get('#screen').setAttribute('class', 'lock transition-down')
         setTimeout(function () {
-            document.querySelector("#screen").removeAttribute("class", "lock transition-down")
+            get('#screen').removeAttribute('class', 'lock transition-down')
         }, 2000);
-    }, 5500);
 }
 
 // Start Web
 
 window.onload = () => {
-    loadPage()
-    console.log(">_ Ready!")
+    welcome()
+    console.log('>_ Ready!')
 }

@@ -5,7 +5,7 @@
   --secundary: #007E80;
   --complement-b1: #004853;
   --complement-b2: #23384F;
-  --complement-r: #F63700;
+  --complement-r: #f63700;
   --complement-o: #FB6900;
   --gray-l1: #F8F8F8;
   --gray-l2: #E8E8E8;
@@ -27,12 +27,15 @@ img {
   max-width: 100% !important;
 }
 
+body{
+  background-color: var(--gray-d2);
+}
+
 .container {
   z-index: 100;
-  background-color: var(--gray-d2);
-  height: 100vh;
-  width: 100%;
-
+  min-height: 100vh;
+  min-width: 100%;
+  cursor: crosshair;
 
   -webkit-user-select: none;
   /* Safari */
@@ -48,7 +51,7 @@ img {
 
 .nav {
   display: flex;
-  height: 15vh;
+  min-height: 15vh;
   align-items: center;
   justify-content: center;
 }
@@ -74,13 +77,13 @@ img {
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  cursor: none;
+  min-height: 100vh;
 }
 
 .name {
   font-family: 'Major Mono Display', monospace;
 
-  animation: textColor 8s infinite 6s;
+  animation: textColorPrimary 8s infinite 6s;
 }
 
 .main-title .name {
@@ -101,14 +104,30 @@ img {
 
   animation: textTyping 4.5s steps(35),
     textPulse 5s infinite alternate 6s,
-    textTypingCursor .3s infinite step-end alternate;
+    textTypingCursor .25s infinite step-end alternate;
+}
+
+.main-title #start {
+  cursor: pointer;
+  margin: 2rem auto;
+}
+
+.main-title #start *{
+  font-size: 2rem;
+  animation: textColorRed 3s infinite;
+}
+
+.main-title #start i{
+  display: block;
+  margin-bottom: .5rem;
+  font-size: 4rem;
 }
 
 /*------------------------ Main-Content ------------------------*/
 
 .main-content section {
   display: flex;
-  height: 70vh;
+  min-height: 70vh;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -127,7 +146,7 @@ img {
 /*------------------------ Footer ------------------------*/
 
 .footer {
-  height: 15vh;
+  min-height: 15vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -170,10 +189,15 @@ img {
   right: 0px;
   left: 0;
   bottom: 0;
+  cursor:none;
 }
 
 .transition-down {
   animation: transitionDown 2s;
+}
+
+.transition-fadeIn {
+  animation: fadeIn 3s;
 }
 
 /*------------------------ Animations ------------------------*/
@@ -193,10 +217,21 @@ img {
   }
 }
 
-/* Change to dark color */
-@keyframes textColor {
+/* Change to primary color */
+@keyframes textColorPrimary {
   50% {
     color: var(--primary)
+  }
+
+  100% {
+    color: var(--gray-l1)
+  }
+}
+
+/* Change to red color */
+@keyframes textColorRed {
+  50% {
+    color: var(--complement-r)
   }
 
   100% {
@@ -225,18 +260,31 @@ img {
 /* Typing effect text - Cursor */
 @keyframes textTypingCursor {
   0% {
-    border-color: rgba(251, 105, 0, 0);
+    border-color: rgba(246, 55, 0, 0);
   }
 
-  33% {
-    border-color: rgba(251, 105, 0, .33);
+  20% {
+    border-color: rgba(246, 55, 0, .2);
   }
+  40% {
+    border-color: rgba(246, 55, 0, .4);
 
-  66% {
-    border-color: rgba(251, 105, 0, .66);
   }
-
+  60% {
+    border-color: rgba(246, 55, 0, .6);
+  }
+  80% {
+    border-color: rgba(246, 55, 0, .8);
+  }
   100% {
-    border-color: rgba(251, 105, 0, 1);
+    border-color: rgba(246, 55, 0, 1);
   }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0;}
+  25% { opacity: .25;}
+  50% { opacity: .5;}
+  75% { opacity: .75;}
+  100% { opacity: .1;}
 }
