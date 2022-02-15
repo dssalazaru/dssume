@@ -45,7 +45,7 @@ const welcome = () => {
         get('.title').setAttribute('style', 'border-right:0');
     }, 6000);
     setTimeout(function () {
-        get('.name').textContent = 'Daniel Steven Salazar Uribe';
+        // get('.name').textContent = 'Daniel Steven Salazar Uribe';
         get('#start').removeAttribute('class', 'hide');
         document.querySelector('.main-title').removeAttribute('style', 'cursor:none')
     }, 6000);

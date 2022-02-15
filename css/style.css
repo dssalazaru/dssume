@@ -88,9 +88,8 @@ body{
 
 .main-title .name {
   display: block;
-  width: 14ch;
   margin: 0 auto;
-  font-size: 5rem;
+  font-size: 7.3rem;
 }
 
 .main-title .title {
@@ -109,10 +108,24 @@ body{
 
 .main-title #start {
   cursor: pointer;
-  margin: 2rem auto;
+  margin: 1rem auto;
+
+  font-size: 2rem;
+  padding: .8rem 1rem .6rem;
+  animation: textColorRed 3s infinite;
+  border: .3rem solid;
+  border-radius: 1rem;
 }
 
-.main-title #start *{
+.main-title #start span{
+  margin-right: .5rem;
+}
+
+.main-title #start *{ 
+  animation: textColorRed 3s infinite;
+}
+
+/* .main-title #start *{
   font-size: 2rem;
   animation: textColorRed 3s infinite;
 }
@@ -121,7 +134,7 @@ body{
   display: block;
   margin-bottom: .5rem;
   font-size: 4rem;
-}
+} */
 
 /*------------------------ Main-Content ------------------------*/
 
