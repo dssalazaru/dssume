@@ -131,6 +131,7 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  animation: fadeIn 2s;
 }
 
 .about p {
@@ -197,7 +198,7 @@ body{
 }
 
 .transition-fadeIn {
-  animation: fadeIn 3s;
+  animation: fadeIn 5s;
 }
 
 /*------------------------ Animations ------------------------*/
@@ -282,9 +283,6 @@ body{
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0;}
-  25% { opacity: .25;}
-  50% { opacity: .5;}
-  75% { opacity: .75;}
-  100% { opacity: .1;}
+  from { opacity: 0;}
+  to { opacity: 1;}
 }
