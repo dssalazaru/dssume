@@ -84,9 +84,24 @@ const transitionDown = () => {
         }, 2000);
 }
 
+const typing = (str,item) => {
+    dat = Array.from(str)
+    let i = 0
+    
+const repeat = setInterval(function () {
+    if (dat.length > 0) {
+    get('.test').textContent += dat.shift()
+    }else {
+        clearTimeout(repeat)
+    }
+}, 150)
+}
+
 // Start Web
 
 window.onload = () => {
     welcome()
+    var dat = 'Hi, my name is Daniel Salazar, i am from Colombia, i am infrastructure enginner with 3 years of experiences     in IT working with cloud services, Windows & Linux, SQL databases, troubleshoot and 1 year learning about     programming with languages like.'
+    typing(dat, get('.test'))
     console.log('>_ Ready!')
 }

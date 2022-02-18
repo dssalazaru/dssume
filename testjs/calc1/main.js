@@ -39,6 +39,7 @@ const sum = (n1, n2) => {
 }
 
 
+// Array.shift
 
 
 let isCero = () => {
