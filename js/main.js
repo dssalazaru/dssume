@@ -3,6 +3,13 @@
 const nav = document.querySelectorAll('.nav li')
 const content = document.querySelectorAll('.main-content section')
 const startBtn = document.querySelector('#start')
+let aboutTxt = `Hi, my name is Daniel Salazar, I am from Colombia;¡
+I am Infrastructure Enginner/Junior Developer¡
+with 3 years of experiences working in IT;¡
+I have knowledge in cloud services(AWS, Private Cloud),¡
+Windows & Linux, SQL databases, troubleshoot, etc.¡
+Now, i have 1 year learning about programming.¡¡
+Main languajes: Python, Java, JavaScript`
 
 // Click events | set var clickEvent with => click('#name')
 
@@ -60,22 +67,14 @@ startBtn.addEventListener('click', (e) => {
     document.querySelector('#header').classList.remove('hide')
     document.querySelector('.main-title').classList.add('hide')
     loadData('about')
+    typing(aboutTxt, get('.about .txt'))
 }, 700);
-
 })
-
-// Start page
-
-const start = () => {
-    // fadeIn
-}
 
 
 // Utils
 
-const get = (item) => {
-    return document.querySelector(item)
-}
+const get = (item) => {return document.querySelector(item)}
 
 const transitionDown = () => {
     get('#screen').setAttribute('class', 'lock transition-down')
@@ -85,23 +84,28 @@ const transitionDown = () => {
 }
 
 const typing = (str,item) => {
-    dat = Array.from(str)
-    let i = 0
-    
-const repeat = setInterval(function () {
-    if (dat.length > 0) {
-    get('.test').textContent += dat.shift()
-    }else {
-        clearTimeout(repeat)
-    }
-}, 150)
+    let dat = Array.from(str)
+
+    const letters = setInterval(function () {
+        if (dat.length > 0) {
+            l = dat.shift()
+            if (l == '¡') {
+                document.querySelector('.about .txt').innerHTML += '<br />'
+            }else{
+                document.querySelector('.about .txt').innerHTML += l
+                
+            }
+        }else {
+            clearTimeout(letters)
+            console.log('stopped')
+        }
+    }, 120)
 }
+
 
 // Start Web
 
 window.onload = () => {
     welcome()
-    var dat = 'Hi, my name is Daniel Salazar, i am from Colombia, i am infrastructure enginner with 3 years of experiences     in IT working with cloud services, Windows & Linux, SQL databases, troubleshoot and 1 year learning about     programming with languages like.'
-    typing(dat, get('.test'))
     console.log('>_ Ready!')
 }

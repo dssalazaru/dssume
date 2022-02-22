@@ -139,24 +139,29 @@ body{
 /*------------------------ Main-Content ------------------------*/
 
 .main-content section {
-  display: flex;
+  /*display: flex;*/
   min-height: 70vh;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  width: 70%;
+  margin: 2rem auto;
+  /*justify-content: center;*/
+  /*flex-direction: column;*/
   animation: fadeIn 2s;
 }
 
-.about p {
-  width: 70%;
-  text-align: justify;
-  font-size: 2rem;
+.about > .txt{
+  width: 80%;
+  text-align: left;
+  font-size: 1.5rem;
+  display: inline;
 }
 
-.about pre {
-  font-size: 2rem;
-  margin: 2rem;
+.about > .cursor{
+  border-right: 1rem solid;
+
+  animation: textTypingCursor .25s infinite step-end alternate;
 }
+
 /*------------------------ Footer ------------------------*/
 
 .footer {
