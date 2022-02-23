@@ -51,9 +51,10 @@ body{
 
 .nav {
   display: flex;
-  min-height: 15vh;
+  min-height: 10vh;
   align-items: center;
   justify-content: center;
+  outline: 2px solid var(--gray-d1);
 }
 
 .nav li {
@@ -61,6 +62,17 @@ body{
   padding: .3rem 1.2rem;
   font-size: 1.5rem;
   color: var(--primary);
+  cursor: pointer;
+}
+
+.nav li:hover {
+  color: var(--complement-r);
+  text-decoration: line-through;
+}
+
+.nav li:active {
+  scale: 0.9;
+  animation: textColorRed 1s infinite;
 }
 
 .active {
@@ -83,7 +95,8 @@ body{
 .name {
   font-family: 'Major Mono Display', monospace;
 
-  animation: textColorPrimary 8s infinite 6s;
+  animation: textColorPrimary 8s infinite 6s,
+  fadeIn 5s;
 }
 
 .main-title .name {
@@ -138,28 +151,41 @@ body{
 
 /*------------------------ Main-Content ------------------------*/
 
-.main-content section {
-  /*display: flex;*/
-  min-height: 70vh;
-  align-items: center;
-  width: 70%;
-  margin: 2rem auto;
-  /*justify-content: center;*/
-  /*flex-direction: column;*/
-  animation: fadeIn 2s;
+.main-content .section {
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--complement-b2);
 }
 
-.about > .txt{
-  width: 80%;
-  text-align: left;
-  font-size: 1.5rem;
+.block {
+  margin-top: 2rem;
+}
+.txt{
+  font-size: 1.6rem;
   display: inline;
+  text-align: left;
+
+  animation: fadeIn 3s;
 }
 
-.about > .cursor{
-  border-right: 1rem solid;
+.h3{
+  text-align: center;
+  font-size: 2rem;
+  margin: 2rem;
+  text-decoration: underline;
+  animation: textColorRed 3s infinite,fadeIn 5s;
+}
 
-  animation: textTypingCursor .25s infinite step-end alternate;
+.pre.txt{
+  animation: textColorPrimary 12s infinite,fadeIn 5s;
+}
+
+.cursor{
+  border-left: 0.6rem solid;
+  padding: 0.3rem;
+
+  animation: textTypingCursor .3s infinite step-end alternate;
 }
 
 /*------------------------ Footer ------------------------*/
@@ -170,11 +196,13 @@ body{
   align-items: center;
   justify-content: space-around;
   font-size: 2rem;
-  outline: 2px solid var(--complement-r);
+  /* outline: 2px solid var(--complement-r);*/
+  outline: 2px solid var(--gray-d1);
 }
 
 .footer .name {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  width: 3ch;
 }
 
 .footer .social {
@@ -189,8 +217,13 @@ body{
 }
 
 .icon:hover {
-  color: var(--complement-r);
+  animation: textColorRed 2s infinite;
 }
+
+.icon:active{
+  scale: .9;
+}
+
 
 /*------------------------ Utils ------------------------*/
 

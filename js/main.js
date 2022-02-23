@@ -1,44 +1,37 @@
 // Variables
 
 const nav = document.querySelectorAll('.nav li')
-const content = document.querySelectorAll('.main-content section')
+const section = document.querySelectorAll('.section')
 const startBtn = document.querySelector('#start')
-let aboutTxt = `Hi, my name is Daniel Salazar, I am from Colombia;¡
-I am Infrastructure Enginner/Junior Developer¡
-with 3 years of experiences working in IT;¡
-I have knowledge in cloud services(AWS, Private Cloud),¡
-Windows & Linux, SQL databases, troubleshoot, etc.¡
-Now, i have 1 year learning about programming.¡¡
-Main languajes: Python, Java, JavaScript`
-
-// Click events | set var clickEvent with => click('#name')
-
-// const click = (item) => {
-//     let ce = document.querySelector(item);
-//     ce.addEventListener('click', (e) => {
-//         e.preventDefault();
-//         console.log('button 1')
-//     })
-// }
-
+const aboutText = `
+Name: Daniel Salazar | Age: 22 | Country: Colombia¡
+Current Job: Infrastructure Analyst¡
+Desired Job: Python/Java/JavaScript Developer¡
+Experience: 3 years working in IT¡
+Knowledges: Cloud Computing(AWS, Private Cloud), Windows, Linux,¡
+SQL DBs, troubleshoot, Git, Agile, Virtualization, Scripting¡¡
+Programming Skills: 1 year learning about Software Development
+`
+const aboutLang = `Python        [||||||||||||||||||||          ]  68%
+Java          [|||||||||||||                 ]  43%
+JavaScript    [|||||||||||                   ]  35%`
 
 nav.forEach(e => {
     e.addEventListener('click', e => {
-        e.preventDefault()
-        let opt = e.target.textContent
-        // console.log(opt)
+        let opt = e.target.textContent || 'about'
         nav.forEach(e => {
             e.removeAttribute('class', 'active')
         });
         e.target.setAttribute('class', 'active')
+        console.log(opt)
         loadData(opt)
     })
 })
 
 let loadData = (opt) => {
-    content.forEach(e => {
+    section.forEach(e => {
         e.classList.add('hide')
-        if (e.classList.contains(opt)) {
+        if (e.getAttribute('id') == opt) {
             e.classList.remove('hide')
         }
     })
@@ -47,59 +40,69 @@ let loadData = (opt) => {
 // Name and Title animations on page load
 
 const welcome = () => {
-    document.querySelector('.main-title').setAttribute('style', 'cursor:none')
+    get('.main-title').setAttribute('style', 'cursor:none')
     setTimeout(function () {
         get('.title').setAttribute('style', 'border-right:0');
     }, 6000);
     setTimeout(function () {
-        // get('.name').textContent = 'Daniel Steven Salazar Uribe';
         get('#start').removeAttribute('class', 'hide');
-        document.querySelector('.main-title').removeAttribute('style', 'cursor:none')
+        get('.main-title').removeAttribute('style', 'cursor:none')
     }, 6000);
-    setTimeout(function () {transitionDown()}, 5400);
+    setTimeout(function () {
+        transitionDown()
+    }, 5400);
 }
 
 startBtn.addEventListener('click', (e) => {
     e.preventDefault()
     transitionDown()
-    setTimeout(function () {    
-    document.querySelector('#footer').classList.remove('hide')
-    document.querySelector('#header').classList.remove('hide')
-    document.querySelector('.main-title').classList.add('hide')
-    loadData('about')
-    typing(aboutTxt, get('.about .txt'))
-}, 700);
+    setTimeout(function () {
+        get('#footer').classList.remove('hide')
+        get('#header').classList.remove('hide')
+        get('.main-title').classList.add('hide')
+        loadData('about')
+        typing(aboutText, get('#about .block .txt'))
+    }, 700);
+    setTimeout(function () {
+        get('.h3').classList.remove('hide')
+        get('.pre.txt').classList.remove('hide')
+        get('.h3').innerHTML = 'Main languajes'
+        get('.pre.txt').innerHTML = aboutLang
+    }, 24000)
 })
 
+//&ensp;
+//&emsp;
 
 // Utils
 
-const get = (item) => {return document.querySelector(item)}
+const get = (item) => {
+    return document.querySelector(item)
+}
 
 const transitionDown = () => {
     get('#screen').setAttribute('class', 'lock transition-down')
-        setTimeout(function () {
-            get('#screen').removeAttribute('class', 'lock transition-down')
-        }, 2000);
+    setTimeout(function () {
+        get('#screen').removeAttribute('class', 'lock transition-down')
+    }, 2000);
 }
 
-const typing = (str,item) => {
-    let dat = Array.from(str)
+const typing = (str, item) => {
+    let words = Array.from(str)
 
     const letters = setInterval(function () {
-        if (dat.length > 0) {
-            l = dat.shift()
+        if (words.length > 0) {
+            l = words.shift()
             if (l == '¡') {
-                document.querySelector('.about .txt').innerHTML += '<br />'
-            }else{
-                document.querySelector('.about .txt').innerHTML += l
-                
+                item.innerHTML += '<br />'
+            } else {
+                item.innerHTML += l
             }
-        }else {
+        } else {
             clearTimeout(letters)
             console.log('stopped')
         }
-    }, 120)
+    }, 80)
 }
 
 
