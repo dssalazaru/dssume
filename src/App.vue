@@ -1,26 +1,166 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <div id="screen" class="hide"></div>
+    <main id="main">
+      <Start @click="changer()" v-if="active === 1" />
+      <Content v-if="active === 2" :txt="aboutText"/>
+    </main>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import Start from './components/Start.vue'
+import Content from './components/Content.vue'
+import Top from './components/Top.vue'
+import Bot from './components/Bot.vue'
 
 export default {
-  name: 'App',
+  // name: 'App',
   components: {
-    HelloWorld
-  }
+    Start,
+    Content,
+  },
+  data() {
+    return {
+      active: 1,
+      counter: 0,
+      activeMenu: Top.activeItem,
+      aboutText: `{
+Name: "Daniel Salazar",
+Age: 22, Country: "Colombia",
+Current Job: "Infrastructure Analyst",
+Desired Job: "Python/JavaScript Developer or DevOps",
+Experience: "3 years working in IT",
+Knowledges: ["Cloud Computing(AWS, Private Cloud)", "Windows", "Linux",
+"SQL", "troubleshoot", "Git", "Agile", "Virtualization", "Scripting"]
+Programming Skills: 1 year learning about Software Developmen.`
+    }
+  },
+  mounted() {
+  },
+  methods: {
+    // screenclose() {
+    //   console.log('wow')
+    //   let scrn = document.querySelector('#screen')
+    //   scrn.classList.remove('hide')
+    //   scrn.classList.add('transition-down')
+    //   setTimeout(function () {
+    //   scrn.classList.remove('add')
+    //   }, 2000)
+    // },
+    changer() {
+      if (this.active === 1) { this.active = 2}
+      // else { this.active = 1 }
+      console.log(this.activeMenu)
+      console.log(this.active)
+    }
+  },
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: var(--gray-l1);
+  font-family: 'Share Tech Mono', monospace, Verdana, Arial;
 }
+
+/*------------------------ Global ------------------------*/
+
+:root {
+  --primary: #00B9BD;
+  --secundary: #007E80;
+  --term: #001b26;
+  --complement-b1: #004853;
+  --complement-b2: #23384F;
+  --complement-r: #f63700;
+  --complement-o: #FB6900;
+  --gray-l1: #F8F8F8;
+  --gray-l2: #E8E8E8;
+  --gray-d1: #898989;
+  --gray-d2: #383B40;
+  font-size: 16px;
+}
+
+/*------------------------ AllPage ------------------------*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: content-box;
+}
+
+img {
+  max-width: 100% !important;
+}
+
+body{
+  background-color: var(--term);
+}
+
+.container {
+  z-index: 100;
+  min-height: 100vh;
+  min-width: 100%;
+  cursor: crosshair;
+
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
+
+.nm {
+  font-family: 'Major Mono Display', monospace;
+}
+
+/*------------------------ Utils ------------------------*/
+
+.hide {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.lock {
+  z-index: 1000 !important;
+  background: var(--gray-d2);
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0;
+  bottom: 0;
+  cursor:none;
+}
+
+.transition-down {
+  animation: transitionDown 2s;
+}
+
+.transition-fadeIn {
+  animation: fadeIn 5s;
+}
+
+/* Change to red color */
+@keyframes textColorRed {
+  50% {
+    color: var(--complement-r)
+  }
+
+  100% {
+    color: var(--gray-l1)
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
 </style>
