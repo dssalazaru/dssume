@@ -1,47 +1,32 @@
 <template>
   <div class="container">
     <div id="screen" class="hide"></div>
-    <main id="main">
+    <main @click="removeCursor()" class="cc">
       <Start @click="changer()" v-if="active === 1" />
-      <Content v-if="active === 2" :txt="aboutText"/>
+      <Page v-if="active === 2" />
     </main>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import Start from './components/Start.vue'
-import Content from './components/Content.vue'
-import Top from './components/Top.vue'
-import Bot from './components/Bot.vue'
+import Page from './components/Page.vue'
 
 export default {
-  // name: 'App',
   components: {
     Start,
-    Content,
+    Page,
   },
   data() {
     return {
       active: 1,
       counter: 0,
-      activeMenu: Top.activeItem,
-      aboutText: `{
-Name: "Daniel Salazar",
-Age: 22, Country: "Colombia",
-Current Job: "Infrastructure Analyst",
-Desired Job: "Python/JavaScript Developer or DevOps",
-Experience: "3 years working in IT",
-Knowledges: ["Cloud Computing(AWS, Private Cloud)", "Windows", "Linux",
-"SQL", "troubleshoot", "Git", "Agile", "Virtualization", "Scripting"]
-Programming Skills: 1 year learning about Software Developmen.`
     }
   },
   mounted() {
   },
   methods: {
-    // screenclose() {
-    //   console.log('wow')
+    // screenclose()
     //   let scrn = document.querySelector('#screen')
     //   scrn.classList.remove('hide')
     //   scrn.classList.add('transition-down')
@@ -54,6 +39,9 @@ Programming Skills: 1 year learning about Software Developmen.`
       // else { this.active = 1 }
       console.log(this.activeMenu)
       console.log(this.active)
+    },
+    removeCursor() {
+    document.querySelector('main').classList.remove("cc", "cp")
     }
   },
 }
@@ -104,7 +92,6 @@ body{
   z-index: 100;
   min-height: 100vh;
   min-width: 100%;
-  cursor: crosshair;
 
   -webkit-user-select: none;
   /* Safari */
@@ -114,6 +101,14 @@ body{
   /* IE10+/Edge */
   user-select: none;
   /* Standard */
+}
+
+.cc {
+  cursor: crosshair;
+}
+
+.cp {
+  cursor: pointer;
 }
 
 .nm {
@@ -145,6 +140,17 @@ body{
 
 .transition-fadeIn {
   animation: fadeIn 5s;
+}
+
+/* Change to primary color */
+@keyframes textColorPrimary {
+  50% {
+    color: var(--primary)
+  }
+
+  100% {
+    color: var(--gray-l1)
+  }
 }
 
 /* Change to red color */

@@ -9,20 +9,29 @@
       </ul>
     </nav>
   </header>
+  <Content :active="activePage" />
+  <Bot />
 </template>
 
 <script>
+import Content from './Content.vue'
+import Bot from './Bot.vue'
+
 export default {
-  name: 'Header',
+  name: 'Page',
+  components: {
+    Content,
+    Bot
+  },
   data() {
-    return { activeItem: 'about' }
+    return { activePage: 'about' }
   },
   methods: {
     isActive: function (menuItem) {
-      return this.activeItem === menuItem
+      return this.activePage === menuItem
     },
     setActive: function (menuItem) {
-      this.activeItem = menuItem
+      this.activePage = menuItem
     }
   }
 }
@@ -35,7 +44,7 @@ export default {
   text-align: center;
   min-height: 10vh;
   align-items: center;
-  outline: 2px solid var(--gray-d1);
+  // border-bottom: 2px solid var(--gray-d1);
 }
 
 .nav li {

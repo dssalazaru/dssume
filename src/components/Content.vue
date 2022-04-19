@@ -1,32 +1,42 @@
 <template>
-  <Top />
-    <section class="content transition-fadeIn">
-      <div class="block hide">
-        <pre class="txt">{{ txt }}</pre>
-        <!-- <span class="cursor"></span> -->
-      </div>
-    </section>
-  <Bot />
+  <section class="content transition-fadeIn">
+    <div class="block">
+      <div  v-if="active=='about'" class="txt" v-html="aboutContent"></div>
+      <div v-if="active=='experience'" class="txt">{{ experienceContent }}</div>
+      <div v-if="active=='projects'" class="txt">{{ projectsContent }}</div>
+      <div v-if="active=='contact'" class="txt">{{ contactContent }}</div>
+    </div>
+  </section>
 </template>
 
 <script>
-
-import Top from './Top.vue'
-import Bot from './Bot.vue'
-
 export default {
-  components: {
-    Top,
-    Bot,
-  },
   props: {
-    txt: String
+    active: String
   },
   data() {
-    
+    return {
+      aboutContent: `<pre>{
+  Name: "Daniel Salazar"
+  Age: 22,
+  Country: "Colombia",
+  Current_Job: "Infrastructure Analyst",
+  Desired_Job: "Python/JavaScript Developer or DevOps",
+  Experience: "3 years working on Infrastructure",
+  Programming_Skills: [
+    "8 months - software development certification",
+    "1 year - Autonomous learning" 
+    ]
+}</pre>`,
+      experienceContent: `
+      Knowledges: ["Cloud Computing(AWS, Private Cloud)", "Windows", "Linux",
+      "SQL", "troubleshoot", "Git", "Agile", "Virtualization", "Scripting"]`,
+      projectsContent: 'Projects',
+      contactContent: 'Contact',
+    }
   },
   mounted() {
-    document.querySelector('.block').classList.remove('hide')
+
   }
 }
 </script>
@@ -36,12 +46,13 @@ export default {
 /*------------------------ Main-Content ------------------------*/
 
 .content {
-  min-height: 75vh;
+  min-height: calc(75vh - 4px);
   display: flex;
   justify-content: center;
-  background:linear-gradient( rgba(0, 27, 38, 0.9) 100%, rgba(0, 27, 38, 0.9)100%),url("../assets/pointed3.jpg");
+  background:linear-gradient( rgba(0, 27, 38, 0.9) 100%, rgba(0, 27, 38, 0.9)100%),url("../assets/pointed2.jpg");
   background-repeat:no-repeat;
   background-size: cover;
+  outline: 2px solid var(--gray-d1);
 }
 
 .block {
@@ -49,30 +60,11 @@ export default {
 }
 
 .txt{
-  font-size: 1.6rem;
-  display: inline;
+  font-size: 2rem;
+  // display: inline;
   text-align: left;
 
   animation: fadeIn 3s;
-}
-
-.h3{
-  text-align: center;
-  font-size: 2rem;
-  margin: 2rem;
-  text-decoration: underline;
-  animation: textColorRed 3s infinite,fadeIn 5s;
-}
-
-.pre.txt{
-  animation: textColorPrimary 12s infinite,fadeIn 5s;
-}
-
-.cursor{
-  border-left: 0.6rem solid;
-  padding: 0.3rem;
-
-  animation: textTypingCursor .3s infinite step-end alternate;
 }
 
 </style>

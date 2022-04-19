@@ -1,15 +1,17 @@
 <template>
   <div class="main-title">
-    <div class="nm nmt">
-      <div class="nml">D</div><div class="nml">S</div><div class="nml">S</div><div class="nml">U</div>
+    <div class="mid1">
+      <div class="nm nmt">
+        <div v-for="n in nms" :key="n" class="nml">{{ n }}</div>
       </div>
-    <div class="ttlgroup">
-      <div class="ttl typing hide">Infrastructure</div>
-      <div class="ttl typing hide">Development</div>
-      <div class="ttl typing hide">DevOps(soon)</div>
     </div>
-    <div class="start hide">
-      <span>Start</span><i class="fa-solid fa-power-off"></i>
+    <div class="mid2">
+      <div class="ttlgroup">
+        <div v-for="ttl in ttls" :key="ttl" class="ttl typing hide">{{ ttl }}</div>
+      </div>
+      <div class="start hide">
+        <span>Start</span><i class="fa-solid fa-power-off"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -19,21 +21,24 @@ export default {
   name: 'Start',
   data() {
     return {
-      
+      nms: ['D','S','S','U'],
+      ttls: ['Infrastructure', 'Development', 'DevOps(soon)'],
+      state: 0
     }
   },
   created() {
+    
   },
   mounted() {
     try {
       this.showTitles()
-      this.showStartBtn()
+      
     }catch (error){}
   },
   methods: {
   showTitles() {
     let ttls = document.querySelectorAll('.ttl')
-    let time1 = 1200
+    let time1 = 2000
     let time2 = [3200, 2600, 2800]
     let i = 0
     ttls.forEach((e) => {
@@ -41,19 +46,20 @@ export default {
       let l = e.textContent.length
       setTimeout(function () {
         e.classList.remove('hide')
-        console.log(time2[i])
         setTimeout(function () {
           e.classList.remove('typing')
+          this.state = 1
+          if (this.state) {
+            setTimeout(function () {
+              document.querySelector('.start').classList.remove('hide')
+              document.querySelector('main').classList.replace("cc", "cp")
+            }, 2000);
+          }
         }, time2[i]);
         i += 1
       }, time1);
     })
   },
-  showStartBtn() {
-    setTimeout(function () {
-      document.querySelector('.start').classList.remove('hide')
-    }, 6000)
-    }
   },
 }
     // setTimeout(function () {
@@ -74,9 +80,25 @@ export default {
 .main-title {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  justify-content: center;
+  justify-content: space-around;
   min-height: 100vh;
+}
+
+.mid1, .mid2 {
+  height: 50vh;
+}
+
+.mid1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mid2 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
 .nmt {
@@ -143,17 +165,6 @@ export default {
 } */
 
 /*------------------------ Animations ------------------------*/
-
-/* Change to primary color */
-@keyframes textColorPrimary {
-  50% {
-    color: var(--primary)
-  }
-
-  100% {
-    color: var(--gray-l1)
-  }
-}
 
 /* Typing effect text - Text*/
 @keyframes textTyping {

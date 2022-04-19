@@ -1,15 +1,12 @@
 <template>
   <footer class="footer transition-fadeIn">
-    <div class="nm">
+    <div @click="godssu()" class="nm">
       <div class="nml">D</div><div class="nml">S</div><div class="nml">S</div><div class="nml">U</div>
     </div>
     <div class="social">
-      <a href="https://github.com/dssalazaru" target="_blank" rel="noopener noreferrer"><i
-          class="icon fa-brands fa-github-square"></i></a>
-      <a href="https://linkedin.com/in/dssu" target="_blank" rel="noopener noreferrer"><i
-          class="icon fa-brands fa-linkedin"></i></a>
-      <a href="https://instagram.com/dssalazaru" target="_blank" rel="noopener noreferrer"><i
-          class="icon fa-brands fa-instagram"></i></a>
+      <i @click="golink(1)" class="icon fa-brands fa-github-square"></i>
+      <i @click="golink(2)" class="icon fa-brands fa-linkedin"></i>
+      <i @click="golink(3)" class="icon fa-brands fa-instagram"></i>
     </div>
   </footer>
 </template>
@@ -17,7 +14,20 @@
 <script>
 export default {
   name: 'Footer',
-}
+  data() {
+    return {
+      urls: ['https://dssu.me', 'https://github.com/dssalazaru', 'https://linkedin.com/in/dssu', 'https://instagram.com/dssalazaru']
+    }
+  },
+  methods: {
+    godssu() {
+      window.location.replace(this.urls[0])
+    },
+    golink(i) {
+      window.open(this.urls[i], "_blank")
+    },
+  },
+  }
 </script>
 
 <style scoped lang="scss">
@@ -30,7 +40,6 @@ export default {
   align-items: center;
   justify-content: space-around;
   font-size: 2rem;
-  outline: 2px solid var(--gray-d1);
 }
 
 .footer .nm {
@@ -38,6 +47,11 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   font-size: 3rem;
   gap: .1rem 1.2rem;
+}
+
+.footer .nm:hover {
+  cursor: pointer;
+  animation: textColorPrimary 4s infinite,
 }
 
 .social {
