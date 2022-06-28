@@ -1,10 +1,9 @@
 <template>
-  <div class="container">
-    <div id="screen" class="hide"></div>
-    <main @click="removeCursor()" class="cc">
-      <Start @click="changer()" v-if="active === 1" />
-      <Page v-if="active === 2" />
-    </main>
+  <div class="container cc" @click="removeCursor()">
+    <!-- <Start @click="changer()" v-if="active === 1" /> -->
+    <Start v-if="active === 1" @pressStart="changeData()" />
+
+    <Page v-if="active === 2" />
   </div>
 </template>
 
@@ -13,6 +12,7 @@ import Start from './components/Start.vue'
 import Page from './components/Page.vue'
 
 export default {
+  name: 'Root',
   components: {
     Start,
     Page,
@@ -26,29 +26,18 @@ export default {
   mounted() {
   },
   methods: {
-    // screenclose()
-    //   let scrn = document.querySelector('#screen')
-    //   scrn.classList.remove('hide')
-    //   scrn.classList.add('transition-down')
-    //   setTimeout(function () {
-    //   scrn.classList.remove('add')
-    //   }, 2000)
-    // },
-    changer() {
+    changeData() {
       if (this.active === 1) { this.active = 2}
-      // else { this.active = 1 }
-      console.log(this.activeMenu)
-      console.log(this.active)
     },
     removeCursor() {
-    document.querySelector('main').classList.remove("cc", "cp")
+    document.querySelector('.container').classList.remove("cc", "cp")
     }
   },
 }
 </script>
 
 <style lang="scss">
-#app {
+#main {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--gray-l1);
@@ -140,6 +129,26 @@ body{
 
 .transition-fadeIn {
   animation: fadeIn 5s;
+}
+
+.start {
+  cursor: pointer;
+  margin: 1rem auto;
+  font-size: 2rem;
+  padding: .8rem 1rem .6rem;
+  border: .3rem solid;
+  border-radius: 1rem;
+
+  animation: fadeIn 5s,
+  textColorRed 3s infinite;
+}
+
+.start span{
+  margin-right: .5rem;
+}
+
+.start *{ 
+  animation: textColorRed 3s infinite;
 }
 
 /* Change to primary color */

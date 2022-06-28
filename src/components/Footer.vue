@@ -1,7 +1,9 @@
 <template>
   <footer class="footer transition-fadeIn">
     <div @click="godssu()" class="nm">
-      <div class="nml">D</div><div class="nml">S</div><div class="nml">S</div><div class="nml">U</div>
+      <div v-for="n in name" :key="n">
+        <div v-for="n in nms" :key="n" class="nml">{{ n }}</div>
+      </div>
     </div>
     <div class="social">
       <i @click="golink(1)" class="icon fa-brands fa-github-square"></i>
@@ -16,7 +18,8 @@ export default {
   name: 'Footer',
   data() {
     return {
-      urls: ['https://dssu.me', 'https://github.com/dssalazaru', 'https://linkedin.com/in/dssu', 'https://instagram.com/dssalazaru']
+      urls: ['https://dssu.me', 'https://github.com/dssalazaru', 'https://linkedin.com/in/dssu', 'https://instagram.com/dssalazaru'],
+      name: ['D','S','S','U'],
     }
   },
   methods: {

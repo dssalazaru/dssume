@@ -9,9 +9,9 @@
       <div class="ttlgroup">
         <div v-for="ttl in ttls" :key="ttl" class="ttl typing hide">{{ ttl }}</div>
       </div>
-      <div class="start hide">
-        <span>Start</span><i class="fa-solid fa-power-off"></i>
-      </div>
+    <div class="start hide" @click="startButton()">
+      <span>Start</span><i class="fa-solid fa-power-off"></i>
+    </div>
     </div>
   </div>
 </template>
@@ -43,7 +43,7 @@ export default {
     let i = 0
     ttls.forEach((e) => {
       time1 += 600
-      let l = e.textContent.length
+      // let l = e.textContent.length
       setTimeout(function () {
         e.classList.remove('hide')
         setTimeout(function () {
@@ -52,7 +52,7 @@ export default {
           if (this.state) {
             setTimeout(function () {
               document.querySelector('.start').classList.remove('hide')
-              document.querySelector('main').classList.replace("cc", "cp")
+              document.querySelector('.container').classList.replace("cc", "cp")
             }, 2000);
           }
         }, time2[i]);
@@ -60,6 +60,9 @@ export default {
       }, time1);
     })
   },
+    startButton () {
+      this.$emit('pressStart', 2)
+    }
   },
 }
     // setTimeout(function () {
