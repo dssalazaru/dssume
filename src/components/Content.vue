@@ -1,10 +1,10 @@
 <template>
   <section class="content transition-fadeIn">
     <div class="block">
-      <div  v-if="active=='about'" class="txt" v-html="aboutContent"></div>
-      <div v-if="active=='experience'" class="txt">{{ experienceContent }}</div>
-      <div v-if="active=='projects'" class="txt">{{ projectsContent }}</div>
-      <div v-if="active=='contact'" class="txt">{{ contactContent }}</div>
+      <div  v-if="activePage=='about'" class="txt" v-html="aboutContent"></div>
+      <div v-if="activePage=='experience'" class="txt">{{ experienceContent }}</div>
+      <div v-if="activePage=='projects'" class="txt">{{ projectsContent }}</div>
+      <div v-if="activePage=='contact'" class="txt">{{ contactContent }}</div>
     </div>
   </section>
 </template>
@@ -12,7 +12,7 @@
 <script>
 export default {
   props: {
-    active: String
+    activePage: String
   },
   data() {
     return {

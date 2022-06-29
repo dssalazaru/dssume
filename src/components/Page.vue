@@ -1,6 +1,6 @@
 <template>
   <Header @active="getActive" />
-  <Content :active="activePage"/>
+  <Content :activePage="activePage"/>
   <Footer />
 </template>
 
@@ -20,8 +20,8 @@ export default {
     return { activePage: 'about' }
   },
   methods: {
-    getActive(act) {
-      this.activePage = act;
+    getActive(active) {
+      this.activePage = active;
     }
   }
 }

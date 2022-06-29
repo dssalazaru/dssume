@@ -1,14 +1,12 @@
 <template>
   <footer class="footer transition-fadeIn">
-    <div @click="godssu()" class="nm">
-      <div v-for="n in name" :key="n">
-        <div v-for="n in nms" :key="n" class="nml">{{ n }}</div>
-      </div>
+    <div @click="goLink(0)" class="nm">
+      <div v-for="n in name" :key="n" class="nml">{{ n }}</div>
     </div>
     <div class="social">
-      <i @click="golink(1)" class="icon fa-brands fa-github-square"></i>
-      <i @click="golink(2)" class="icon fa-brands fa-linkedin"></i>
-      <i @click="golink(3)" class="icon fa-brands fa-instagram"></i>
+      <i @click="goLink(1)" class="icon fa-brands fa-github-square"></i>
+      <i @click="goLink(2)" class="icon fa-brands fa-linkedin"></i>
+      <i @click="goLink(3)" class="icon fa-brands fa-instagram"></i>
     </div>
   </footer>
 </template>
@@ -23,11 +21,9 @@ export default {
     }
   },
   methods: {
-    godssu() {
-      window.location.replace(this.urls[0])
-    },
-    golink(i) {
-      window.open(this.urls[i], "_blank")
+    goLink(i) {
+      if (i === 0) { window.location.replace(this.urls[i]) }
+      else { window.open(this.urls[i], "_blank") }
     },
   },
   }

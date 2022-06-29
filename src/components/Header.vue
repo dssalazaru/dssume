@@ -16,16 +16,16 @@ export default {
   name: 'Header',
   data() {
     return {
-      activeItem: ''
+      activePage: ''
     }
   },
   methods: {
     isActive (menuItem) {
-      return this.activeItem === menuItem
+      return this.activePage === menuItem
     },
     setActive (menuItem) {
-      this.activeItem = menuItem
-      this.$emit('activeItem', this.activeItem)
+      this.activePage = menuItem
+      this.$emit('active', this.activePage)
     }
   },
   }
