@@ -1,15 +1,15 @@
 <template>
-  <div class="main-title">
-    <div class="mid1">
+  <div class="start-logo cc">
+    <div class="title mid">
       <div class="nm nmt">
         <div v-for="n in nms" :key="n" class="nml">{{ n }}</div>
       </div>
     </div>
-    <div class="mid2">
+    <div class="subtitle mid">
       <div class="ttlgroup">
         <div v-for="ttl in ttls" :key="ttl" class="ttl typing hide">{{ ttl }}</div>
       </div>
-    <div class="start hide" @click="startButton()">
+    <div @click="startButton()" :class="{ hide:!this.state }" class="start-btn">
       <span>Start</span><i class="fa-solid fa-power-off"></i>
     </div>
     </div>
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       nms: ['D','S','S','U'],
-      ttls: ['Infrastructure', 'Development', 'DevOps(soon)'],
+      ttls: ['Infrastructure', 'Development'],
       state: 0
     }
   },
@@ -36,68 +36,60 @@ export default {
     }catch (error){}
   },
   methods: {
-  showTitles() {
-    let ttls = document.querySelectorAll('.ttl')
-    let time1 = 2000
-    let time2 = [3200, 2600, 2800]
-    let i = 0
-    ttls.forEach((e) => {
-      time1 += 600
-      // let l = e.textContent.length
-      setTimeout(function () {
-        e.classList.remove('hide')
-        setTimeout(function () {
-          e.classList.remove('typing')
-          this.state = 1
-          if (this.state) {
-            setTimeout(function () {
-              document.querySelector('.start').classList.remove('hide')
-              document.querySelector('.container').classList.replace("cc", "cp")
-            }, 2000);
-          }
-        }, time2[i]);
-        i += 1
-      }, time1);
-    })
-  },
+    showTitles() {
+      let ttls = document.querySelectorAll('.ttl')
+      let showTime = 2000
+      let hideTime = 3200
+      // let time2 = [3200, 2600, 2800]
+      ttls.forEach((e) => {
+        showTime += 600
+        setTimeout(() => {
+          e.classList.remove('hide')
+          this.hideTyping(e, hideTime)
+          hideTime -= 600
+        }, showTime);
+      })
+    },
+    hideTyping(elem, time) {
+      setTimeout( () => {
+        elem.classList.remove('typing')
+        this.state = 1
+      }, time);
+    },
+    showStartButton () {
+        setTimeout( () => {
+          document.querySelector('.start').classList.remove('hide')
+          document.querySelector('.container').classList.replace("cc", "cp")
+      }, 2000);
+    },
     startButton () {
-      this.$emit('pressStart', 2)
+      this.$emit('pressStart')
     }
   },
 }
-    // setTimeout(function () {
-    //     get('#start').removeAttribute('class', 'hide');
-    //     get('.main-title').removeAttribute('style', 'cursor:none')
-    // }, 6000);
-    // setTimeout(function () {
-    //     transitionDown()
-    // }, 5400);
-
-
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 /*------------------------ Main-Title ------------------------*/
 
-.main-title {
+.start-logo {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   min-height: 100vh;
 }
 
-.mid1, .mid2 {
+.mid {
   height: 50vh;
 }
 
-.mid1 {
+.title {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.mid2 {
+.subtitle {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -136,7 +128,7 @@ export default {
   animation: textPulse 5s infinite alternate,
 }
 
-.start {
+.start-btn {
   cursor: pointer;
   margin: 1rem auto;
   font-size: 2rem;
@@ -148,11 +140,11 @@ export default {
   textColorRed 3s infinite;
 }
 
-.start span{
+.start-btn span{
   margin-right: .5rem;
 }
 
-.start *{ 
+.start-btn *{ 
   animation: textColorRed 3s infinite;
 }
 

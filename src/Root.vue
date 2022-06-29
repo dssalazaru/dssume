@@ -1,9 +1,7 @@
 <template>
-  <div class="container cc" @click="removeCursor()">
-    <!-- <Start @click="changer()" v-if="active === 1" /> -->
-    <Start v-if="active === 1" @pressStart="changeData()" />
-
-    <Page v-if="active === 2" />
+  <div class="container">
+    <Start v-if="!start" @pressStart="this.start = true" />
+    <Page v-else />
   </div>
 </template>
 
@@ -19,29 +17,27 @@ export default {
   },
   data() {
     return {
-      active: 1,
-      counter: 0,
+      start: false,
     }
   },
   mounted() {
   },
   methods: {
-    changeData() {
-      if (this.active === 1) { this.active = 2}
-    },
     removeCursor() {
-    document.querySelector('.container').classList.remove("cc", "cp")
+      document.querySelector('.container').classList.remove("cc", "cp")
     }
   },
 }
 </script>
 
 <style lang="scss">
+
 #main {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--gray-l1);
   font-family: 'Share Tech Mono', monospace, Verdana, Arial;
+  font-size: 16px;
 }
 
 /*------------------------ Global ------------------------*/
@@ -58,7 +54,6 @@ export default {
   --gray-l2: #E8E8E8;
   --gray-d1: #898989;
   --gray-d2: #383B40;
-  font-size: 16px;
 }
 
 /*------------------------ AllPage ------------------------*/
@@ -108,16 +103,14 @@ body{
 
 .hide {
   display: none !important;
-  width: 0 !important;
-  height: 0 !important;
 }
 
 .lock {
   z-index: 1000 !important;
   background: var(--gray-d2);
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   left: 0;
   bottom: 0;
   cursor:none;
@@ -127,28 +120,8 @@ body{
   animation: transitionDown 2s;
 }
 
-.transition-fadeIn {
+.fadein {
   animation: fadeIn 5s;
-}
-
-.start {
-  cursor: pointer;
-  margin: 1rem auto;
-  font-size: 2rem;
-  padding: .8rem 1rem .6rem;
-  border: .3rem solid;
-  border-radius: 1rem;
-
-  animation: fadeIn 5s,
-  textColorRed 3s infinite;
-}
-
-.start span{
-  margin-right: .5rem;
-}
-
-.start *{ 
-  animation: textColorRed 3s infinite;
 }
 
 /* Change to primary color */
@@ -173,7 +146,7 @@ body{
   }
 }
 
-@keyframes fadeIn {
+@keyframes fadein {
   from { opacity: 0;}
   to { opacity: 1;}
 }

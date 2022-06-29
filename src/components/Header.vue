@@ -1,11 +1,11 @@
 <template>
-  <header class="header transition-fadeIn">
+  <header class="header fadein">
     <nav>
       <ul class="nav">
-        <li @click="setActive('about')" :class="{ active:isActive('about') }" class="about">about</li>
-        <li @click="setActive('experience')" :class="{ active:isActive('experience') }" class="experience">experience</li>
-        <li @click="setActive('projects')" :class="{ active:isActive('projects') }" class="projects">projects</li>
-        <li @click="setActive('contact')" :class="{ active:isActive('contact') }" class="contact">contact</li>
+        <li @click="setActive('about')" :class="{ active:isActive('about') }">about</li>
+        <li @click="setActive('experience')" :class="{ active:isActive('experience') }">experience</li>
+        <li @click="setActive('projects')" :class="{ active:isActive('projects') }">projects</li>
+        <li @click="setActive('contact')" :class="{ active:isActive('contact') }">contact</li>
       </ul>
     </nav>
   </header>
@@ -16,7 +16,7 @@ export default {
   name: 'Header',
   data() {
     return {
-      activePage: ''
+      activePage: 'about'
     }
   },
   methods: {
@@ -65,6 +65,26 @@ export default {
   color: var(--complement-r) !important;
   font-weight: bold;
   animation: textPulse 3s infinite alternate;
+}
+
+.start {
+  cursor: pointer;
+  margin: 1rem auto;
+  font-size: 2rem;
+  padding: .8rem 1rem .6rem;
+  border: .3rem solid;
+  border-radius: 1rem;
+
+  animation: fadeIn 5s,
+  textColorRed 3s infinite;
+}
+
+.start span{
+  margin-right: .5rem;
+}
+
+.start *{ 
+  animation: textColorRed 3s infinite;
 }
 
 @media (orientation: landscape) and (min-width: 768px){

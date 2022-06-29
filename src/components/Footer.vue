@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer transition-fadeIn">
+  <footer class="footer fadein">
     <div @click="goLink(0)" class="nm">
       <div v-for="n in name" :key="n" class="nml">{{ n }}</div>
     </div>
