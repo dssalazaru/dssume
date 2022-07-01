@@ -1,7 +1,7 @@
 <template>
-  <header class="header fadein">
+  <header class="kf-fadein">
     <nav>
-      <ul class="nav">
+      <ul class="navbar">
         <li @click="setActive('about')" :class="{ active:isActive('about') }">about</li>
         <li @click="setActive('experience')" :class="{ active:isActive('experience') }">experience</li>
         <li @click="setActive('projects')" :class="{ active:isActive('projects') }">projects</li>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'Header',
+  name: 'page-header',
   data() {
     return {
       activePage: 'about'
@@ -33,8 +33,7 @@ export default {
 
 <style scoped lang="scss">
 
-/*------------------------ Footer ------------------------*/
-.nav {
+.navbar {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   text-align: center;
@@ -43,22 +42,22 @@ export default {
   // border-bottom: 2px solid var(--gray-d1);
 }
 
-.nav li {
+.navbar li {
   list-style-type: none;
   padding: .3rem 1.2rem;
   font-size: 2rem;
   color: var(--primary);
   cursor: pointer;
-}
 
-.nav li:hover {
+  &:hover {
   color: var(--complement-r);
   text-decoration: line-through;
-}
+  }
 
-.nav li:active {
-  scale: 0.9;
-  animation: textColorRed 1s infinite;
+  &:active {
+    scale: 0.9;
+    animation: textColorRed 1s infinite;
+  } 
 }
 
 .active {
@@ -67,28 +66,8 @@ export default {
   animation: textPulse 3s infinite alternate;
 }
 
-.start {
-  cursor: pointer;
-  margin: 1rem auto;
-  font-size: 2rem;
-  padding: .8rem 1rem .6rem;
-  border: .3rem solid;
-  border-radius: 1rem;
-
-  animation: fadeIn 5s,
-  textColorRed 3s infinite;
-}
-
-.start span{
-  margin-right: .5rem;
-}
-
-.start *{ 
-  animation: textColorRed 3s infinite;
-}
-
 @media (orientation: landscape) and (min-width: 768px){
-  .nav {
+  .navbar {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

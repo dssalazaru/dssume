@@ -11,9 +11,8 @@
 
 <script>
 export default {
-  props: {
-    activePage: String
-  },
+  name: 'page-content',
+  props: [ 'activePage' ],
   data() {
     return {
       aboutContent: `<div>{

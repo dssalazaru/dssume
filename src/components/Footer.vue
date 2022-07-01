@@ -1,7 +1,7 @@
 <template>
-  <footer class="footer fadein">
-    <div @click="goLink(0)" class="nm">
-      <div v-for="n in name" :key="n" class="nml">{{ n }}</div>
+  <footer class="footer kf-fadein">
+    <div @click="goLink(0)" class="name">
+      <span v-for="n in name" :key="n" class="nml">{{ n }}</span>
     </div>
     <div class="social">
       <i @click="goLink(1)" class="icon fa-brands fa-github-square"></i>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'Footer',
+  name: 'page-footer',
   data() {
     return {
       urls: ['https://dssu.me', 'https://github.com/dssalazaru', 'https://linkedin.com/in/dssu', 'https://instagram.com/dssalazaru'],
@@ -51,6 +51,10 @@ export default {
 .footer .nm:hover {
   cursor: pointer;
   animation: textColorPrimary 4s infinite,
+}
+
+.name {
+  font-family: 'Major Mono Display', monospace;
 }
 
 .social {

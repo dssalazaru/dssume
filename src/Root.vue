@@ -1,20 +1,15 @@
 <template>
-  <div class="container">
-    <Start v-if="!start" @pressStart="this.start = true" />
-    <Page v-else />
-  </div>
+  <start v-if="!start" @pressStart="this.start = true" />
+  <page v-else />
 </template>
 
 <script>
-import Start from './components/Start.vue'
-import Page from './components/Page.vue'
+import Start from './components/views/Start.vue'
+import Page from './components/views/Page.vue'
 
 export default {
-  name: 'Root',
-  components: {
-    Start,
-    Page,
-  },
+  name: 'root',
+  components: { Start, Page, },
   data() {
     return {
       start: false,
@@ -23,21 +18,34 @@ export default {
   mounted() {
   },
   methods: {
-    removeCursor() {
-      document.querySelector('.container').classList.remove("cc", "cp")
-    }
+    // removeCursor() {
+    //   document.querySelector('.container').classList.remove("cc", "cp")
+    // }
   },
 }
 </script>
 
 <style lang="scss">
 
-#main {
+.container {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--gray-l1);
   font-family: 'Share Tech Mono', monospace, Verdana, Arial;
   font-size: 16px;
+
+  z-index: 100;
+  min-height: 100vh;
+  min-width: 100%;
+
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
 }
 
 /*------------------------ Global ------------------------*/
@@ -72,31 +80,12 @@ body{
   background-color: var(--term);
 }
 
-.container {
-  z-index: 100;
-  min-height: 100vh;
-  min-width: 100%;
-
-  -webkit-user-select: none;
-  /* Safari */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+/Edge */
-  user-select: none;
-  /* Standard */
-}
-
 .cc {
   cursor: crosshair;
 }
 
 .cp {
   cursor: pointer;
-}
-
-.nm {
-  font-family: 'Major Mono Display', monospace;
 }
 
 /*------------------------ Utils ------------------------*/
@@ -116,12 +105,24 @@ body{
   cursor:none;
 }
 
-.transition-down {
-  animation: transitionDown 2s;
+// .transition-down {
+//   animation: transitionDown 2s;
+// }
+
+.kf-fadein {
+  animation: fadein 5s;
 }
 
-.fadein {
-  animation: fadeIn 5s;
+.kf-t-primary {
+  animation: textColorPrimary 8s infinite 4s;
+}
+
+.kf-t-red {
+  animation: textColorRed 3s infinite;
+}
+
+.kf-t-pulse {
+  animation: textPulse 5s infinite alternate,
 }
 
 /* Change to primary color */
@@ -134,6 +135,7 @@ body{
     color: var(--gray-l1)
   }
 }
+  
 
 /* Change to red color */
 @keyframes textColorRed {
@@ -143,6 +145,16 @@ body{
 
   100% {
     color: var(--gray-l1)
+  }
+}
+
+/* effect transparent in text */
+@keyframes textPulse {
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
