@@ -1,25 +1,27 @@
 <template>
-  <section class="start cc">
-    <div class="mid logo kf-t-primary kf-fadein">
-        <span v-for="(l, index) in logo" :key="index" class="">{{ l }}</span>
+  <main class="start fadein cc">
+    <div class="mid logo kf-t-primary">
+      <span v-for="(l, index) in logo" :key="index">{{ l }}</span>
     </div>
     <div class="mid titles">
-      <span v-for="(title, index) in titles" :key="index" class="title typing hide">{{ title }}</span>
-    <div @click="startButton()" :class="{ hide:!this.state }" class="sbtn kf-t-red kf-fadein">
-      <span>Start</span><i class="fa-solid fa-power-off"></i>
+      <span v-for="(title, index) in titles" :key="index" class="title typing none">{{ title }}</span>
+      <div @click="startButton()" :class="{ hide:!this.state , fadein:this.state }" class="sbtn kf-t-red">
+        <span>Start</span><i class="fa-solid fa-power-off"></i>
+      </div>
     </div>
-    </div>
-  </section>
+  </main>
 </template>
 
 <script>
+
 export default {
+  components: { Close },
   name: 'start',
   data() {
     return {
       logo: ['D','S','S','U'],
       titles: ['Infrastructure', 'Development'],
-      state: 0
+      state: 0,
     }
   },
   created() {
@@ -39,7 +41,7 @@ export default {
       titles.forEach((e) => {
         showTime += 600
         setTimeout(() => {
-          e.classList.remove('hide')
+          e.classList.remove('none')
           this.hideTyping(e, hideTime)
           hideTime -= 600
         }, showTime);
@@ -50,11 +52,6 @@ export default {
         elem.classList.remove('typing')
         this.state = 1
       }, time);
-    },
-    showStartButton () {
-        setTimeout( () => {
-          document.querySelector('.sbtn').classList.remove('hide')
-      }, 2000);
     },
     startButton () {
       this.$emit('pressStart')

@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer kf-fadein">
+  <footer class="footer fadein">
     <div @click="goLink(0)" class="name">
       <span v-for="n in name" :key="n" class="nml">{{ n }}</span>
     </div>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'page-footer',
+  name: 'footer',
   data() {
     return {
       urls: ['https://dssu.me', 'https://github.com/dssalazaru', 'https://linkedin.com/in/dssu', 'https://instagram.com/dssalazaru'],

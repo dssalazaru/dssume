@@ -6,21 +6,13 @@
 <script>
 import Start from './components/views/Start.vue'
 import Page from './components/views/Page.vue'
+import Close from './components/transitions/Close.vue'
 
 export default {
   name: 'root',
-  components: { Start, Page, },
+  components: { Start, Page, Close, },
   data() {
-    return {
-      start: false,
-    }
-  },
-  mounted() {
-  },
-  methods: {
-    // removeCursor() {
-    //   document.querySelector('.container').classList.remove("cc", "cp")
-    // }
+    return { start: false, }
   },
 }
 </script>
@@ -90,8 +82,12 @@ body{
 
 /*------------------------ Utils ------------------------*/
 
-.hide {
+.none {
   display: none !important;
+}
+
+.hide {
+  opacity: 0;
 }
 
 .lock {
@@ -105,11 +101,7 @@ body{
   cursor:none;
 }
 
-// .transition-down {
-//   animation: transitionDown 2s;
-// }
-
-.kf-fadein {
+.fadein {
   animation: fadein 5s;
 }
 

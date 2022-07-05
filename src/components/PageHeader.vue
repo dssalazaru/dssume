@@ -1,5 +1,5 @@
 <template>
-  <header class="kf-fadein">
+  <header class="fadein">
     <nav>
       <ul class="navbar">
         <li @click="setActive('about')" :class="{ active:isActive('about') }">about</li>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'page-header',
+  name: 'header',
   data() {
     return {
       activePage: 'about'

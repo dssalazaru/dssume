@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'page-content',
+  name: 'content',
   props: [ 'activePage' ],
   data() {
     return {
